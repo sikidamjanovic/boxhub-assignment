@@ -13,7 +13,7 @@ function MyApp({
   return(
     <TableContextProvider>
       <main className={`${inter.className} flex justify-center w-screen bg-neutral-950`}>
-        <title>BoxHub - Orders</title>
+        <title>BoxHub - Orders Assignment</title>
         <div className="flex flex-col gap-5 p-10 w-screen h-screen max-w-screen-xl flex-1">
           <Header/>
           <div className="overflow-x-auto flex flex-col items-center w-full h-full shadow-md">

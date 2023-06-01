@@ -94,12 +94,12 @@ export const RouteModal = () => {
           onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps)}
         />
       </div>
-      <div className="flex flex-col gap-2 mt-5">
-        <div className="flex items-center gap-2 text-sm text-zinc-100">
+      <div className="flex flex-col gap-3 mt-5">
+        <div className="flex items-center gap-2 text-sm text-neutral-100">
           <div className="h-5 w-5 rounded-full bg-red-500 text-white font-bold text-xs flex items-center justify-center">A</div>
           {selectedRoute.origin_address} 
         </div>
-        <div className="flex items-center gap-2 text-sm text-zinc-100">
+        <div className="flex items-center gap-2 text-sm text-neutral-100">
           <div className="h-5 w-5 rounded-full bg-red-500 text-white font-bold text-xs flex items-center justify-center">B</div>
           {selectedRoute.shipping_address}
         </div>

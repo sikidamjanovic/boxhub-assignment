@@ -43,7 +43,6 @@ export const Modal:React.FC<ModalProps> = ({ children, isOpen, onClose }) => {
                 </div>
                 <div className="mt-10 flex justify-end">
                   <button
-                    type="button"
                     className="outline-none inline-flex justify-center rounded-md bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-600"
                     onClick={onClose}
                   >

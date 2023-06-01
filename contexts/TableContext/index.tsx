@@ -16,10 +16,11 @@ export interface OrderProps {
 }
 
 interface TableContextProps {
-  orders: OrderProps[],
+  orders: OrderProps[] | [],
   hidden: HiddenProps[],
   addHidden: (row: string, value: string) => void
   removeHidden: (value: string) => void
+  clearHidden: () => void
   selectedImage: string | null
   setSelectedImage: (selectedImage: string | null) => void
   selectedRoute: RouteProps | null
@@ -41,6 +42,7 @@ export const TableContext = createContext<TableContextProps>({
   hidden: [],
   addHidden: () => null,
   removeHidden: () => null,
+  clearHidden: () => null,
   selectedImage: null,
   setSelectedImage: () => null,
   selectedRoute: null,
@@ -48,10 +50,9 @@ export const TableContext = createContext<TableContextProps>({
 })
 
 export const TableContextProvider: React.FC<{ children: React.ReactNode }> = ({ children = null }) => {
-  const [orders, setOrders] = useState(staticOrders.orders)
+  const [orders, setOrders] = useState<Array<OrderProps> | []>([])
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [selectedRoute, setSelectedRoute] = useState<RouteProps | null>(null)
-  
   const [hidden, setHidden] = useState<Array<HiddenProps>>([])
 
   const addHidden = (row: string, value: string) => {
@@ -72,6 +73,10 @@ export const TableContextProvider: React.FC<{ children: React.ReactNode }> = ({ 
     return 0;
   }
 
+  const clearHidden = () => {
+    setHidden([])
+  }
+
   useEffect(() => {
     const orders = staticOrders.orders.sort(sortByCreated)
     const filteredOrders = orders.filter((order) => {
@@ -90,6 +95,7 @@ export const TableContextProvider: React.FC<{ children: React.ReactNode }> = ({ 
         hidden,
         addHidden,
         removeHidden,
+        clearHidden,
         selectedImage,
         setSelectedImage,
         selectedRoute,
